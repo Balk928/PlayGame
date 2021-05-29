@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Header from './components/Header';
-import StartGame from './Screens/StartGame';
+import StartGame from './screen/StartGame';
 
 function App() {
   return (
@@ -15,10 +15,11 @@ function App() {
 
 const styles = StyleSheet.create({
   container: {
-flex:1,
-
+    flex:1,
+    
 
  },
+ 
 });
 
 export default App;

@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     Input:
     {
 
-        color:'black',
+        color:'rgb(145,123,56)',
         fontSize:25,
         paddingTop:34,
     },
