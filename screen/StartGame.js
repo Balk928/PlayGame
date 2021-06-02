@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import {
   StyleSheet, View, Button, Text, TextInput,
-  TouchableWithoutFeedback, Keyboard, Alert, Card
+  TouchableWithoutFeedback, Keyboard, Alert,
 } from 'react-native';
 import InputNumber from './InputNumber';
 
 
-const StartGame = () => {
+const StartGame = props=> {
   const [enteredValue, setEnteredValue] = useState('');
   const [confirmed, setConfirmed] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState();
@@ -18,6 +18,7 @@ const StartGame = () => {
     setEnteredValue('');
     setConfirmed(false);
   };
+  
   const confirmInputHandler = () => {
     const chosenNumber = parseInt(enteredValue);
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
@@ -29,22 +30,25 @@ const StartGame = () => {
     setConfirmed(true);
     setSelectedNumber(chosenNumber);
     setEnteredValue('');
+    Keyboard.dismiss();
   };
+
   let confirmedOutput;
   if(confirmed)
   {
-    confirmedOutput = 
+    confirmedOutput = (
             
             <View style = {styles.summaryContainer}>
           
             <Text style={{textAlign:'center'}}>You Selected</Text>
             <InputNumber>{selectedNumber}</InputNumber>
             
-            <Button title="StartGame" />
+            <Button title="StartGame" onPress ={()=>props.onStartGame(selectedNumber)
+            } />
             
             </View>
             
-          
+    );      
   }
 
   return (
