@@ -56,8 +56,8 @@ const GameScreen = props=>
         <Text style={styles.text}>Opponents Guess</Text>
         <InputNumber>{currentGuess}</InputNumber>
         <View style = {styles.buttonContainer}>
-            <Button title="LOWER" onPress={nextGuessHandler.bind(this,'Lower')}/>
-            <Button title="GREATER" onPress={nextGuessHandler.bind(this,'Greater')}/>
+            <Button title="LOWER" onPress={nextGuessHandler.bind(this,'Lower')} color='#f7287b'/>
+            <Button title="GREATER" onPress={nextGuessHandler.bind(this,'Greater')} color='#c717fc'/>
         </View>
       </View>
   );

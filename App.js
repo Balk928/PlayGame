@@ -7,33 +7,32 @@ import GameScreen from './screen/GameScreen';
 import GameOverScreen from './screen/GameOverScreen';
 
 function App() {
-  const[guessRounds , setGuessRounds] = useState(0);
+  
   const [userNumber,setUserNumber] = useState();
-
+  const[guessRounds , setGuessRounds] = useState(0);
+  const configureNewGameHandler =() =>{
+    setGuessRounds(0);
+    setUserNumber(null);
+  };
   const startGameHandler= selectedNumber =>{
     setUserNumber(selectedNumber);
-    setGuessRounds(0);
+    
   };
   const gameOverHandler = numOfRounds =>{
     setGuessRounds(numOfRounds);
   }
-
-  
-  
-   let screen = <StartGame  onStartGame = {startGameHandler}/>;
-   if(userNumber && guessRounds<=0)
-   {
-      screen =  <GameScreen userChoice = {userNumber} onGameOver={gameOverHandler}/>;
-   }
-   else if(guessRounds>0)
-   {
-     content = <GameOverScreen/>
+ 
+  let screen = <StartGame  onStartGame = {startGameHandler}/>;
+   if(userNumber && guessRounds <= 0){
+      screen = <GameScreen userChoice = {userNumber} onGameOver={gameOverHandler}/>;
+   }else if(guessRounds >0){
+     screen = <GameOverScreen roundsNumber={guessRounds} 
+     userNumber={userNumber} onRestart = {configureNewGameHandler}/>;
    }
   return (
     <View style={styles.container}>
       <Header Title='Guess A number' />
-
-     {screen}
+      {screen}
     </View>
   );
 }
